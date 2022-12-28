@@ -2,12 +2,8 @@ from flask import Blueprint, Flask, render_template, request, url_for, flash, re
 from werkzeug.exceptions import abort
 from flask.ext.security import login_required
 from .SetupController import app
-db = Blueprint('db', __name__)
 
-@login_required
-@app.route('/login')
-def login():
-    return redirect('/admin')
+
 
 
 # def get_db_connection():

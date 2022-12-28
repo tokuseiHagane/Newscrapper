@@ -14,15 +14,15 @@ services:
             - ./mysql:/docker-entrypoint-initdb.d:ro
             - database_volume:/var/lib/mysql
         ports:
-            - "3308:3306"
+            - "3310:3306"
     flask:
         image: flask
         container_name: flask
         build:
             dockerfile: .docker/Dockerfile
-            context: ./service/
+            context: ./mainservice/
         volumes:
-            - ./flask/:/usr/src/app/
+            - ./:/usr/src/app/
         restart: unless-stopped
         environment:
             DB_HOST: db
@@ -35,17 +35,34 @@ services:
             - db
         depends_on:
             - db
-        command: ["python3", "launch.py"]
-    nginx:
-        image: nginx
-        restart: always
-        volumes:
-        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-        ports:
-        - "80:80"
+        command: ["flask", "run", "--host", "0.0.0.0"]
+    microservice:
+        build:
+            dockerfile: .docker/Dockerfile
+            context: ./microservice
+        image: news-maker
+        container_name: news-maker
+        restart: unless-stopped
+        environment:
+            DB_HOST: db
+            DB_NAME: appdb
+            DB_USER: flask
+            DB_PASSWORD: example
         links:
-        - db
-        
+            - db
+        depends_on:
+            - db
+        command: ["python3", "main.py"]
+    # nginx:
+    #     image: nginx
+    #     container_name: nginx
+    #     restart: always
+    #     volumes:
+    #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    #     ports:
+    #     - "80:80"
+    #     links:
+    #     - db
 
 volumes:
   database_volume:

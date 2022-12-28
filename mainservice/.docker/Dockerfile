@@ -2,11 +2,13 @@ FROM python:3.10.5-slim-buster
 
 RUN apt-get install -yqq --no-install-recommends 
 
-WORKDIR /service
+WORKDIR /app
 
-COPY ./ /service/
+COPY ./ /app/
 
 RUN pip install --no-cache-dir -r ./requirements.txt
+
+ENV FLASK_APP=launch:app
 
 # ADD ./service/model model
 # ADD ./service/controller controller
