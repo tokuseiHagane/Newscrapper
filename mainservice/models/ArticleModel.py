@@ -44,7 +44,7 @@ class Article:
         
         for record in records:
             if record['source_type'] == 'tg':
-                record['source'] = 
+                # record['source'] = 
                 record['source_type'] = 'Tg'
                 record['info_class'] = 'news_info_tg'
                 record['news_div'] = 'news_tg'
