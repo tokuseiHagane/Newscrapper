@@ -9,7 +9,7 @@ class Article:
 
     def get_articles(self, db, start_time=None, time_range=-1, sources=[1,2,3,4,5,6,7], source_types=["tg", "rss"], offset=0) -> list:
         self.sources_model = self.source.get_sources(db) if self.sources_model is None else self.sources_model
-        self.sources_model = [{record[0]:record[1]} for record in self.sources_model]
+        self.sources_model = {record[0]:record[1] for record in self.sources_model} 
         cursor = db.cursor()
         start_time = datetime.datetime.fromtimestamp(start_time)
         start_time_str = start_time.strftime('%Y-%m-%d %H:%M:%S')
@@ -51,13 +51,11 @@ class Article:
                 record['source_type'] = 'Tg'
                 record['info_class'] = 'news_info_tg'
                 record['news_div'] = 'news_tg'
-                record['setting'] = 'tg_setting'
                 record['title'] = ''
             else:
                 record['source'] = self.sources_model[record['source']]
                 record['source_type'] = 'RSS'
                 record['info_class'] = 'news_info_rss'
                 record['news_div'] = 'news_rss'
-                record['setting'] = 'rss_setting'
         print(records)
         return records
