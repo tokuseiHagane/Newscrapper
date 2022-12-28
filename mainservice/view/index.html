@@ -57,21 +57,23 @@
             </div>
         </div>
         <div class="post">
-            {% for record in records %}
-            <div class="news">
-                <div class={{ record['info_class'] }}>
-                    <span>{{ record['title'] }}</span>
-                    <div>{{ record['source'] }}</div>
-                    <div class={{ record['news_div'] }}><p>{{ record['source_type'] }}</p></div>
+            <div class="post_cocs">
+                {% for record in records %}
+                <div class="news">
+                    <div class="{{ record['info_class'] }}">
+                        <span><p>{{ record['title'] }}</p></span>
+                        <div><p>{{ record['source'] }}</p></div>
+                        <div class="{{ record['news_div'] }}"><p>{{ record['source_type'] }}</p></div>
+                    </div>
+                    {% if record['source_type'] == 'Tg' %}
+                        <p>{{record['content']}}</p>
+                    {% else %}
+                        <a href="{{record['content']}}"  target="_blank" rel="noopener noreferrer">{{record['content']}}</a>
+                    {% endif %}
+                    <div class="rss_setting"><div></div><p>{{ record['datetime'] }}</p></div>
                 </div>
-                {% if record['source_type'] == 'Tg' %}
-                    <p>{{record['content']}}</p>
-                {% else %}
-                    <a href="{{record['content']}}"  target="_blank" rel="noopener noreferrer">{{record['content']}}</a>
-                {% endif %}
-                <div class="rss_setting"><div></div><p>{{ record['datetime'] }}</p></div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
         
     </main>
