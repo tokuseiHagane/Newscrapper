@@ -18,3 +18,4 @@ MarkupSafe==2.1.1
 mimesis==5.2.1
 WTForms==3.0.0
 mysql-connector-python
+rich

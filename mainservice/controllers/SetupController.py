@@ -10,9 +10,8 @@ from os import getenv
 from sys import stdout
 import mysql.connector
 
-
 app = Flask(__name__)
-# app.config.from_object(Config)
+
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 while True:
     try:

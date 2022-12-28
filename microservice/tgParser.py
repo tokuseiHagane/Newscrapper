@@ -24,6 +24,7 @@ def addToDB(**kwargs):
                                     kwargs['source']))
         kwargs['db'].commit()
         cursor.close()
+        print(kwargs)
     except Exception as e:
         print(e)
 

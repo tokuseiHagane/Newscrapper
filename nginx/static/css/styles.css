@@ -44,7 +44,7 @@ nav img{
 
 main{
     display: flex;
-    width: -webkit-fill-available;
+    width: 100vw;
     height: max-content;
     align-items: center;
     gap: 50px;

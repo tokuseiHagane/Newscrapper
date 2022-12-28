@@ -25,10 +25,10 @@ def addToDB(**kwargs):
                                         kwargs['date'],
                                         kwargs['source']))
             kwargs['db'].commit()
+            print(kwargs)
         cursor.close()
     except Exception as e:
         print(e)
-
 
 
 async def rssParser(source, url, db):
