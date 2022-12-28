@@ -64,7 +64,7 @@
                     <div>{{ record['source'] }}</div>
                     <div class={{ record['news_div'] }}><p>{{ record['source_type'] }}</p></div>
                 </div>
-                {% if record['source_type'] == 'tg' %}
+                {% if record['source_type'] == 'Tg' %}
                     <p>{{record['content']}}</p>
                 {% else %}
                     <a href="{{record['content']}}"  target="_blank" rel="noopener noreferrer">{{record['content']}}</a>

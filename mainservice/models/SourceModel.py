@@ -6,6 +6,5 @@ class Source:
         cursor = db.cursor()
         cursor.execute(sql_query)
         records = cursor.fetchall()
-        print(records)
         cursor.close()
         return records
