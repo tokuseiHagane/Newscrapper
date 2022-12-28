@@ -31,10 +31,13 @@ nav div{
 p{
     margin: 0;
     padding: 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 35px;
+    color: #FFFFFF;
 }
 nav p{font-size: 21px; height: 16px; color: black; line-height: 25px;} nav h1{font-size: 32px; line-height: 32px;}
-p, a, .news_tg, .news_rss, button{
-    height: 40px;
+a, .news_tg, .news_rss, button{
     font-weight: 700;
     font-size: 20px;
     line-height: 35px;
