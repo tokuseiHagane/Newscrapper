@@ -8,8 +8,7 @@ class Article:
     source_keys = ['id', 'name']
 
     def get_articles(self, db, start_time=None, time_range=-1, sources=[1,2,3,4,5,6,7], source_types=["tg", "rss"], offset=0) -> list:
-        self.sources_model = self.source.get_sources(db) if self.sources_model is None else self.sources_model
-        self.sources_model = {record[0]:record[1] for record in self.sources_model} 
+        self.sources_model = {record[0]:record[1] for record in self.source.get_sources(db)} if self.sources_model is None else self.sources_model
         cursor = db.cursor()
         start_time = datetime.datetime.fromtimestamp(start_time)
         start_time_str = start_time.strftime('%Y-%m-%d %H:%M:%S')
