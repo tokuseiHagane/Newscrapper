@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Newscrapper</title>
         <link rel="stylesheet" href="/static/css/styles.css">
-        <script src="/static/js/fun.js"></script>
     </head>
     <body>
         <nav>
@@ -19,8 +18,8 @@
         <main>
             <div class="tag">
                 <div class="filter">
-                    <button class="rss fil_but" value="source_types">RSS</button>
-                    <button class="tg fil_but" value="source_types">Tg</button>
+                    <button class="rss fil_but" onclick="kok(this.id)" id="RSS">RSS</button>
+                    <button class="tg fil_but" onclick="kok(this.id)" id="TG">Tg</button>
                     <div class="zatich">
                         <div>
                             <input type="radio" name="contact" checked="false" value="time_range">
@@ -43,12 +42,12 @@
                             <p>ALL</p>
                         </div>
                     </div>
-                    <button class="rss fil_but" id="1">News Интерфакс</button>
-                    <button class="tg fil_but" id="4">РБК</button>
-                    <button class="rss fil_but" id="2">ПРАЙМ</button>
-                    <button class="tg fil_but" id="5">РИА Новости</button>
-                    <button class="rss fil_but" id="3">Opennet</button>
-                    <button class="tg fil_but" id="6">RT на русском</button>
+                    <button class="rss fil_but" id="1" onclick="kok(this.id)">News Интерфакс</button>
+                    <button class="tg fil_but" id="4" onclick="kok(this.id)">РБК</button>
+                    <button class="rss fil_but" id="2" onclick="kok(this.id)">ПРАЙМ</button>
+                    <button class="tg fil_but" id="5" onclick="kok(this.id)">РИА Новости</button>
+                    <button class="rss fil_but" id="3" onclick="kok(this.id)">Opennet</button>
+                    <button class="tg fil_but" id="6" onclick="kok(this.id)">RT на русском</button>
                     <div></div>
                     <button class="tg fil_but" id="7">Colonelcassad</button>
                 </div>
@@ -77,6 +76,7 @@
                 </div>
             </div>
         </main>
+        <script src="/static/js/fun.js"></script>
     </body>
 </html>
 
