@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newscrapper</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
-</head>
-<body>
-    <nav >
-        <a href="{{ url_for('views.index') }}"><img src="/static/img/logo.svg"></a>
-        <div>
-            <h1>Newscrapper:</h1>
-            <p>новостной агрегатор</p>
-        </div>
-    </nav>
-    <main>
-        <div class="tag">
-            <div class="filter">
-                <button class="rss fil_but" value="source_types">RSS</button>
-                <button class="tg fil_but" value="source_types">Tg</button>
-                <div class="zatich">
-                    <div>
-                        <input type="radio" name="contact" checked="false" value="time_range">
-                        <p>1</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Newscrapper</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+        <script src="/static/js/fun.js"></script>
+    </head>
+    <body>
+        <nav>
+            <a href="{{ url_for('views.index') }}"><img src="/static/img/logo.svg"></a>
+            <div>
+                <h1>Newscrapper:</h1>
+                <p>новостной агрегатор</p>
+            </div>
+        </nav>
+        <main>
+            <div class="tag">
+                <div class="filter">
+                    <button class="rss fil_but" value="source_types">RSS</button>
+                    <button class="tg fil_but" value="source_types">Tg</button>
+                    <div class="zatich">
+                        <div>
+                            <input type="radio" name="contact" checked="false" value="time_range">
+                            <p>1</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="contact" checked="false" value="time_range">
+                            <p>3</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="contact" checked="false" value="time_range">
+                            <p>7</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="contact" checked="false" value="time_range">
+                            <p>30</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="contact" checked="true" value="time_range">
+                            <p>ALL</p>
+                        </div>
                     </div>
-                    <div>
-                        <input type="radio" name="contact" checked="false" value="time_range">
-                        <p>3</p>
-                    </div>
-                    <div>
-                        <input type="radio" name="contact" checked="false" value="time_range">
-                        <p>7</p>
-                    </div>
-                    <div>
-                        <input type="radio" name="contact" checked="false" value="time_range">
-                        <p>30</p>
-                    </div>
-                    <div>
-                        <input type="radio" name="contact" checked="true" value="time_range">
-                        <p>ALL</p>
-                    </div>
+                    <button class="rss fil_but" id="1">News Интерфакс</button>
+                    <button class="tg fil_but" id="4">РБК</button>
+                    <button class="rss fil_but" id="2">ПРАЙМ</button>
+                    <button class="tg fil_but" id="5">РИА Новости</button>
+                    <button class="rss fil_but" id="3">Opennet</button>
+                    <button class="tg fil_but" id="6">RT на русском</button>
+                    <div></div>
+                    <button class="tg fil_but" id="7">Colonelcassad</button>
                 </div>
-                <button class="rss fil_but" id="1">News Интерфакс</button>
-                <button class="tg fil_but" id="4">РБК</button>
-                <button class="rss fil_but" id="2">ПРАЙМ</button>
-                <button class="tg fil_but" id="5">РИА Новости</button>
-                <button class="rss fil_but" id="3">Opennet</button>
-                <button class="tg fil_but"id="6">RT на русском</button>
-                <div></div>
-                <button class="tg fil_but" id="7">Colonelcassad</button>
-            </div>
-            <div class="but_menu">
-                <button>ВЫБРАТЬ</button>
-                <button value="start_time">СБРОСИТЬ</button>
-            </div>
-        </div>
-        <div class="post">
-            <div class="post_cocs">
-                {% for record in records %}
-                <div class="news">
-                    <div class="{{ record['info_class'] }}">
-                        <span><p>{{ record['title'] }}</p></span>
-                        <div><p>{{ record['source'] }}</p></div>
-                        <div class="{{ record['news_div'] }}"><p>{{ record['source_type'] }}</p></div>
-                    </div>
-                    {% if record['source_type'] == 'Tg' %}
-                        <p>{{ record['content'] }}</p>
-                    {% else %}
-                        <a href="{{ record['content'] }}"  target="_blank" rel="noopener noreferrer">{{ record['content'] }}</a>
-                    {% endif %}
-                    <div class="rss_setting"><div></div><p>{{ record['datetime'] }}</p></div>
+                <div class="but_menu">
+                    <button>ВЫБРАТЬ</button>
+                    <button value="start_time">СБРОСИТЬ</button>
                 </div>
-                {% endfor %}
             </div>
-        </div>
-        
-    </main>
-  </body>
+            <div class="post">
+                <div class="post_cocs">
+                    {% for record in records %}
+                    <div class="news">
+                        <div class="{{ record['info_class'] }}">
+                            <span><p>{{ record['title'] }}</p></span>
+                            <div><p>{{ record['source'] }}</p></div>
+                            <div class="{{ record['news_div'] }}"><p>{{ record['source_type'] }}</p></div>
+                        </div>
+                        {% if record['source_type'] == 'Tg' %}
+                            <p>{{ record['content'] }}</p>
+                        {% else %}
+                            <a href="{{ record['content'] }}"  target="_blank" rel="noopener noreferrer">{{ record['content'] }}</a>
+                        {% endif %}
+                        <div class="rss_setting"><div></div><p>{{ record['datetime'] }}</p></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
 
