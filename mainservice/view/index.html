@@ -66,9 +66,9 @@
                         <div class="{{ record['news_div'] }}"><p>{{ record['source_type'] }}</p></div>
                     </div>
                     {% if record['source_type'] == 'Tg' %}
-                        <p>{{record['content']}}</p>
+                        <p>{{ record['content'] }}</p>
                     {% else %}
-                        <a href="{{record['content']}}"  target="_blank" rel="noopener noreferrer">{{record['content']}}</a>
+                        <a href="{{ record['content'] }}"  target="_blank" rel="noopener noreferrer">{{ record['content'] }}</a>
                     {% endif %}
                     <div class="rss_setting"><div></div><p>{{ record['datetime'] }}</p></div>
                 </div>
